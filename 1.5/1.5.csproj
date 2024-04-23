@@ -7,7 +7,7 @@
         <OutputPath>Assemblies</OutputPath>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AssemblyVersion>0.38.3.05</AssemblyVersion>
-        <BaseOutputPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Empire-Mod-1.5\1.5\Assemblies</BaseOutputPath>
+        <BaseOutputPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Empire-Mod-1.5 dev\1.5\Assemblies</BaseOutputPath>
         <Configurations>Debug;Release;Testing</Configurations>
         <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>

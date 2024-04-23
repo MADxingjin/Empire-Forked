@@ -1094,58 +1094,60 @@ namespace FactionColonies
             }
         }
                 public void updateDailyResearch()
-        {
-            //Research adding
-            if ((Find.ResearchManager.AnyProjectIsAvailable) && researchPointPool != 0)
-            {
-                Messages.Message("NoResearchExpended".Translate(Math.Round(researchPointPool)),
-                    MessageTypeDefOf.NeutralEvent);
-            }
-            else if (researchPointPool != 0 && Find.ResearchManager.AnyProjectIsAvailable)
-            {
-                //Log.Message(researchTotal.ToString());
-                float neededPoints;
-                neededPoints = (float)Math.Ceiling(Find.ResearchManager.GetProject().CostApparent -
-                                                    Find.ResearchManager.GetProject().ProgressApparent);
-                Log.Message("Needed points: " + neededPoints);
+                {
+                    //Research adding
+                    if ((Find.ResearchManager.GetProject() == null) && researchPointPool != 0)
+                    {
+                        Messages.Message("NoResearchExpended".Translate(Math.Round(researchPointPool)),MessageTypeDefOf.NeutralEvent);
+                    }
+                    else if (researchPointPool != 0 && Find.ResearchManager.GetProject() != null)
+                    {
+                        //Log.Message(researchTotal.ToString());
+                        float neededPoints;
+                        neededPoints = (float)Math.Ceiling(Find.ResearchManager.GetProject().CostApparent - 
+                            Find.ResearchManager.GetProject().ProgressApparent);
+                        Log.Message("Needed points: " + neededPoints);
 
-                float expendedPoints;
-                if (researchPointPool >= neededPoints)
-                {
-                    researchPointPool -= neededPoints;
-                    expendedPoints = neededPoints;
-                }
-                else
-                {
-                    expendedPoints = researchPointPool;
-                    researchPointPool = 0;
-                }
+                        float expendedPoints;
+                        if (researchPointPool >= neededPoints)
+                        {
+                            researchPointPool -= neededPoints;
+                            expendedPoints = neededPoints;
+                        }
+                        else
+                        {
+                            expendedPoints = researchPointPool;
+                            researchPointPool = 0;
+                            Log.Message("Used all research points in the pool.");
+                        }
 
-                Log.Message("Expended points: " + expendedPoints);
+                        Log.Message("Expended points: " + expendedPoints);
 
-                Find.LetterStack.ReceiveLetter("ResearchPointsExpended".Translate(),
-                    "ResearchExpended".Translate(Math.Round(expendedPoints), Find.ResearchManager.GetProject().LabelCap,
-                        Math.Round(researchPointPool)), LetterDefOf.PositiveEvent);
-                if (Find.ColonistBar.GetColonistsInOrder().Count > 0)
-                {
-                    Pawn pawn = Find.ColonistBar.GetColonistsInOrder()[0];
-                    Find.ResearchManager.ResearchPerformed(
-                        (float)Math.Ceiling(
-                            ((1 * Find.ResearchManager.GetProject().CostFactor(pawn.Faction.def.techLevel)) /
-                             (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints),
-                        pawn);
-                    Log.Message("Passed to function: " + (float)Math.Ceiling(
-                        ((1 * Find.ResearchManager.GetProject().CostFactor(pawn.Faction.def.techLevel)) /
-                         (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints));
+                        Find.LetterStack.ReceiveLetter(
+                            "ResearchPointsExpended".Translate(), 
+                            "ResearchExpended".Translate(Math.Round(expendedPoints), 
+                            Find.ResearchManager.GetProject().LabelCap, 
+                            Math.Round(researchPointPool)), 
+                            LetterDefOf.PositiveEvent);
+
+                        if (Find.ColonistBar.GetColonistsInOrder().Count > 0)
+                        {
+                            Pawn pawn = Find.ColonistBar.GetColonistsInOrder()[0];
+                            Find.ResearchManager.ResearchPerformed(
+                                (float)Math.Ceiling(((1 * Find.ResearchManager.GetProject().CostFactor(pawn.Faction.def.techLevel)) / 
+                                    (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints),
+                                pawn);
+                            Log.Message("Passed to function: " + (float)Math.Ceiling(
+                                ((1 * Find.ResearchManager.GetProject().CostFactor(pawn.Faction.def.techLevel)) / 
+                                    (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints));
+                        }
+                        else
+                        {
+                            Log.Message("Could not find colonist to research with");
+                            Find.ResearchManager.ResearchPerformed((float)Math.Ceiling((1 / 
+                                (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints), null);
+                        }
                 }
-                else
-                {
-                    Log.Message("Could not find colonist to research with");
-                    Find.ResearchManager.ResearchPerformed(
-                        (float)Math.Ceiling((1 / (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) *
-                                             expendedPoints), null);
-                }
-            }
         }
 
 
