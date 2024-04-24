@@ -1,3 +1,13 @@
+#For 1.5 Only
+
+I've been working on updating this mod because I really missed it after switching to 1.5.   I am not a software developer nor do I have the time to add new features so please do not set your expectations high.
+
+This version is here because I know other people would probably like to try it out.
+
+
+
+#Old Readme:
+
 # Empire-Mod
 This is the repository for the Empire mod Ludeon Studio's topdown base building-exploration game RimWorld.
 The Mod features the ability to found and manage your own empire in order to assist the player in his daily endeavours.
