@@ -1129,20 +1129,26 @@ namespace FactionColonies
                             Find.ResearchManager.GetProject().LabelCap, 
                             Math.Round(researchPointPool)), 
                             LetterDefOf.PositiveEvent);
-
+                Log.Message("Test1");
                         if (Find.ColonistBar.GetColonistsInOrder().Count > 0)
                         {
                             Pawn pawn = Find.ColonistBar.GetColonistsInOrder()[0];
+//Debugging                   Log.Message(pawn);
+//Debugging                   Log.Message("TestIF1");
                             Find.ResearchManager.ResearchPerformed(
                                 (float)Math.Ceiling(((1 * Find.ResearchManager.GetProject().CostFactor(pawn.Faction.def.techLevel)) / 
                                     (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints),
                                 pawn);
-                            Log.Message("Passed to function: " + (float)Math.Ceiling(
-                                ((1 * Find.ResearchManager.GetProject().CostFactor(pawn.Faction.def.techLevel)) / 
-                                    (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints));
+//Debugging                    Log.Message("TestIF2");
+ //Commented out this section, all it does is throw a NRE exception and spending research points works fine without it
+                    // Log.Message("Passed to function: " + (float)Math.Ceiling(
+                           //     ((1 * Find.ResearchManager.GetProject().CostFactor(pawn.Faction.def.techLevel)) / 
+                             //       (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints));
+//Debugging                    Log.Message("TestIF3");
                         }
                         else
                         {
+//Debugging                    Log.Message("TestElse");
                             Log.Message("Could not find colonist to research with");
                             Find.ResearchManager.ResearchPerformed((float)Math.Ceiling((1 / 
                                 (0.00825 * Find.Storyteller.difficulty.researchSpeedFactor)) * expendedPoints), null);
