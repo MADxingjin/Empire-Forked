@@ -159,10 +159,10 @@ namespace FactionColonies
                 def = RoadDefOf.AncientAsphaltRoad;
 
             }
-            //else if (DefDatabase<ResearchProjectDef>.GetNamed("FCRoadBuildingDirt", false).IsFinished)
-            //{
-             //   def = RoadDefOf.DirtRoad;
-            //}
+            else if (DefDatabase<ResearchProjectDef>.GetNamed("FCRoadBuildingDirt", false).IsFinished)
+            {
+                def = FCRoadsDef.DirtRoad;
+            }
 
             if (this.roadDef != def)
             {

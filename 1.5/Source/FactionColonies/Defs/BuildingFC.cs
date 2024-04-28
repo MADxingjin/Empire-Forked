@@ -70,4 +70,10 @@ namespace FactionColonies
 
         static BuildingFCDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(BuildingFCDefOf));
     }
+    public static class FCRoadsDef
+    {
+        public static RoadDef DirtRoad;
+
+        public static object RoadDef { get; internal set; }
+    }
 }

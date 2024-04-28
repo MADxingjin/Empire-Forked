@@ -58,7 +58,7 @@ namespace FactionColonies
             buttons = buttonsTab0;
             resourceSize = 40;
             faction = Find.World.GetComponent<FactionFC>();
-            if (faction != null)
+ /*           if (faction != null)    // Changed this function to stop NRE
             {
                 settlementList = faction.settlements;
                 faction.updateAverages();
@@ -81,6 +81,32 @@ namespace FactionColonies
             {
                 Log.Message("WorldComp FactionFC is null - Something is wrong! Empire Mod");
             }
+ */
+            if(faction == null)
+            {
+                Log.Message("WorldComp FactionFC is null - Something is wrong! Empire Mod");
+                return;
+            }
+            else
+            {
+                settlementList = faction.settlements;
+                faction.updateAverages();
+
+                //Initial release - Autocreate faction
+                //Faction faction = FactionColonies.getPlayerColonyFaction();
+                //if (faction == null)
+                //{
+                //	FactionColonies.createPlayerColonyFaction();
+                //}
+
+                //if (faction.capitalLocation == -1)
+                //{
+                //	faction.setCapital();
+                //}
+
+                faction.updateTotalProfit();
+            }
+
 
         }
 
