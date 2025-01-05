@@ -25,7 +25,7 @@
 
 <!-- createColonyWindowFC -->
 <SettleANewColony>开辟新领地</SettleANewColony>
-<TravelTime>用时</TravelTime>
+<TravelTime>到达用时</TravelTime>
 <InitialCost>初始成本</InitialCost>
 <Silver>白银</Silver>
 <BaseProductionStats>地块产量</BaseProductionStats>

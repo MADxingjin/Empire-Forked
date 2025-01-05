@@ -5,7 +5,9 @@ using RimWorld.Planet;
 using Verse;
 
 namespace FactionColonies
-{//stops friendly faction from being a group source
+{
+    //stops friendly faction from being a group source
+    //TODO: can be a prefix?
     [HarmonyPatch(typeof(IncidentWorker_RaidFriendly), "TryResolveRaidFaction")]
     class RaidFriendlyStopSettlementFaction
     {

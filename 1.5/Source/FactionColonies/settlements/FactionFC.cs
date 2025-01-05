@@ -14,6 +14,9 @@ using LudeonTK;
 
 namespace FactionColonies
 {
+    /// <summary>
+    /// World Comps For Empire.
+    /// </summary>
     public class FactionFC : WorldComponent
     {
         public int eventTimeDue;

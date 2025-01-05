@@ -163,7 +163,7 @@ namespace FactionColonies
 
 			Find.WindowStack.Add(new FloatMenu(settlementList));
 		});
-
+		///<summary> </summary>
 		/// <param name="factionFC"></param>
 		/// <param name="faction"></param>
 		/// <param name="tile"></param>
@@ -179,7 +179,10 @@ namespace FactionColonies
 
 				if (!factionFC.hasPolicy(FCPolicyDefOf.isolationist)) list.Add(NewOption(factionFC, faction, tile, MilitaryJob.CaptureEnemySettlement));
 				list.Add(NewOption(factionFC, faction, tile, MilitaryJob.RaidEnemySettlement));
-				if (factionFC.hasPolicy(FCPolicyDefOf.authoritarian) && faction.def.defName != "VFEI_Insect") list.Add(NewOption(factionFC, faction, tile, MilitaryJob.EnslaveEnemySettlement));
+				//TODO make faction black list && always allow enslave raid option.
+				//if (factionFC.hasPolicy(FCPolicyDefOf.authoritarian) && faction.def.defName != "VFEI_Insect") list.Add(NewOption(factionFC, faction, tile, MilitaryJob.EnslaveEnemySettlement));
+
+                if (faction.def.defName != "VFEI_Insect") list.Add(NewOption(factionFC, faction, tile, MilitaryJob.EnslaveEnemySettlement));
 
 				Find.WindowStack.Add(new FloatMenu(list));
 			}

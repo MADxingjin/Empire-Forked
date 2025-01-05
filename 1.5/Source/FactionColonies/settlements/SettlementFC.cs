@@ -8,6 +8,9 @@ using FactionColonies.util;
 
 namespace FactionColonies
 {
+    /// <summary>
+    /// The Object represents the settlement
+    /// </summary>
     public class SettlementFC : IExposable, ILoadReferenceable
     {
         /// <summary>
@@ -91,10 +94,16 @@ namespace FactionColonies
 
         public int NumberBuildings => 3 + (int) Math.Floor(settlementLevel / 2f);
 
+        /// <summary>
+        /// Removed level cap, which used to be 10 and is hardcoded.
+        /// But... Why?
+        /// </summary>
+        /// <param name="times"></param>
         public void upgradeSettlement(int times = 1)
         {
+            var maxLevel = LoadedModManager.GetMod<FactionColoniesMod>().settings.settlementMaxLevel; 
             settlementLevel += times;
-            if (settlementLevel > 10) settlementLevel = 10;
+            if (settlementLevel > maxLevel) settlementLevel = maxLevel;
             if (settlementLevel < 0) settlementLevel = 0;
             updateStats();
         }
@@ -150,9 +159,15 @@ namespace FactionColonies
             updateStats();
         }
 
+        /// <summary>
+        /// Where stats of the settlement is updated.
+        /// Tons of hardcoded traits here.
+        /// once we migrate to stat based system we`ll have to rewrite all of these.
+        /// </summary>
         public void updateStats()
         {
             FactionFC factionFc = Find.World.GetComponent<FactionFC>();
+            //TODO Move to factional comps page.
             int isolationistExtraWorkers = 0;
 
             if (factionFc.hasPolicy(FCPolicyDefOf.isolationist))
@@ -959,8 +974,8 @@ namespace FactionColonies
                         faction.addExperienceToFactionLevel(5f);
 
                         string text = "";
-
-                        int num = new IntRange(1, 3).RandomInRange;
+                            //Todo make this a toggable option
+                        int num = new IntRange(2,5).RandomInRange;
                         for (int i = 0; i <= num; i++)
                         {
                             Pawn prisoner = PaymentUtil.generatePrisoner(militaryEnemy);

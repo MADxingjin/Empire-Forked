@@ -1,0 +1,760 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>1.5</name>
+    </assembly>
+    <members>
+        <member name="P:FactionColonies.PatchNoteDef.Title">
+            <summary>
+            The title of the update example: [Empire] Update 0.38.00
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.ModContentPack">
+            <summary>
+            Returns the ModContentPack assosiated with the given ModId
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNoteDef.PackHasModId(Verse.ModContentPack)">
+            <summary>
+            Checks if a given <paramref name="pack"/> has the saved modId
+            </summary>
+            <param name="pack"></param>
+            <returns>true if it does, false otherwise</returns>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.ModName">
+            <summary>
+            Returns the mod name or an error if the mod wasn't found
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.Description">
+            <summary>
+            The def description
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.VersionNumber">
+            <summary>
+            The complete Version number formatted like: "1.02.03"
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.ToOldEmpireVersion">
+            <summary>
+            Converts the version to the old Empire version format
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.Major">
+            <summary>
+            The Major version number
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.Minor">
+            <summary>
+            The Minor version number
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.Patch">
+            <summary>
+            The Patch version number
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.GetPatchNoteType">
+            <summary>
+            Returns the PatchNoteType
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.Links">
+            <summary>
+            Returns a link as provided by the def
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.PatchNotesFormatted">
+            <summary>
+            Returns the patch notes seperated by new lines
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.AdditionalNotesFormatted">
+            <summary>
+            Returns additional notes as provided by the def
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.PatchNotesIntroString">
+            <summary>
+            Returns the opening sentence of the patch notes
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.AuthorsFormatted">
+            <summary>
+            Returns the list of authors in this format: "name0, name1, name2, ..., nameN-1 and nameN" where N is the amount of authors
+            only returns the name of one author if there is only one
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.AuthorLine">
+            <summary>
+            Returns a string that contains the authors in a sentence
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.LinkButtonImages">
+            <summary>
+            Returns the cached link button images, caches them if not yet cached
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.LinkButtonToolTips">
+            <summary>
+            Returns the tool tips for each LinkButton. May include empty strings
+            </summary>
+        </member>
+        <member name="P:FactionColonies.PatchNoteDef.PatchNoteImages">
+            <summary>
+            Returns the cached patchnote images, caches them if not yet cached
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNoteDef.ClearCachedData">
+            <summary>
+            Clears the cached data of this def
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNoteDef.GetLatestForMod(System.String)">
+            <summary>
+            Sorts all patchNoteDefs to find the latest one for a mod using it's <paramref name="modId"/>
+            </summary>
+            <param name="modId"></param>
+            <returns>the newest PatchNoteDef, null if no PatchNoteDefs with the <paramref name="modId"/> exist</returns>
+        </member>
+        <member name="T:FactionColonies.FactionColonies">
+            <summary>
+            TODO Separate to another .cs file.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FactionColonies.SpawnSquad(FactionColonies.SettlementFC,FactionColonies.MercenarySquadFC,Verse.IntVec3,System.Boolean)">
+            <summary>
+            Internal method used to spawn a <paramref name="settlement"/>'s squad for military deployment
+            </summary>
+            <param name="settlement"></param>
+            <param name="squad"></param>
+            <param name="dropPosition"></param>
+            <param name="DropPod"></param>
+        </member>
+        <member name="M:FactionColonies.FactionColonies.CallinAlliedForces(FactionColonies.SettlementFC,System.Boolean,FactionColonies.MercenarySquadFC)">
+            <summary>
+            Deploys a <paramref name="settlement"/>'s main force, takes silver if there is an <paramref name="overrideSquad"/>
+            </summary>
+            <param name="settlement"></param>
+            <param name="DropPod"></param>
+            <param name="overrideSquad"></param>
+        </member>
+        <member name="M:FactionColonies.FactionColonies.CallinExtraForces(FactionColonies.SettlementFC,System.Boolean)">
+            <summary>
+            Deploys the secondary military of the empire from a <paramref name="settlement"/> 
+            </summary>
+            <param name="settlement"></param>
+            <param name="DropPod"></param>
+            <param name="cost"></param>
+        </member>
+        <member name="M:FactionColonies.FactionColonies.CallInAlliedForcesSelect">
+            <summary>
+            Debug function. Calls in Allied Forces. Doesn't need translations
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FactionColonies.GetTownTitle(FactionColonies.SettlementFC)">
+            <summary>
+            Generate a title for settlements with default name.(mostly at their first generation)
+            But why is this func here?
+            </summary>
+            <param name="settlement"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FactionColonies.FactionColoniesMod.ShuttleOption">
+            <summary>
+            Creates an option for the list of ForcedTaxDeliveryOptions. Shuttles may not be used if royality is inactive
+            </summary>
+        </member>
+        <member name="P:FactionColonies.FactionColoniesMod.ForcedTaxDeliveryOptions">
+            <summary>
+            Creates a list of options for forced tax delivery
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FactionColoniesMod.DoSettingsWindowContents(UnityEngine.Rect)">
+            <summary>
+            Draw that intensive Settings Menu.
+            </summary>
+            <param name="inRect"></param>
+        </member>
+        <member name="T:FactionColonies.DisableMilitaryAid">
+            <summary>
+            This patch disables the military aid a player can receive through the comms console for our faction
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PrisonerGizmosPatch.SendPrisonerAction(Verse.Pawn)">
+            <param name="prisoner"></param>
+            <returns>A <c>Command_Action</c> that sends the selected <paramref name="prisoner"/> to an empire settlementFC. Only displays if the <paramref name="prisoner"/> can be send.</returns>
+        </member>
+        <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.SettlementHasUsableMilitary(FactionColonies.SettlementFC)">
+            <summary>
+            Checks if a <paramref name="settlement"/> has a currently usable military squad
+            </summary>
+            <param name="settlement"></param>
+            <returns>true if usable, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.NewOption(FactionColonies.FactionFC,RimWorld.Faction,System.Int32,FactionColonies.util.MilitaryJob)">
+            <summary>
+            Takes a <paramref name="job"/> and generates a FloatMenuOptions using the strings in AddButtonsToNonEmpireObjects.MilJobOptionStringsDic
+            </summary>
+            <param name="factionFC"></param>
+            <param name="faction"></param>
+            <param name="tile"></param>
+            <param name="job"></param>
+            <returns>the generated FloatMenuOption</returns>
+        </member>
+        <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.HostileAction(FactionColonies.FactionFC,RimWorld.Faction,System.Int32)">
+            <param name="factionFC"></param>
+            <param name="faction"></param>
+            <param name="tile"></param>
+            <returns>A <c>Command_Action</c> that creates a <c>FloatMenu</c> displaying hostile actions a player can take against a settlement</returns>
+        </member>
+        <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.PeacefulAction(FactionColonies.FactionFC,RimWorld.Faction)">
+            <param name="factionFC"></param>
+            <param name="faction"></param>
+            <returns>A <c>Command_Action</c> that sends a diplomatic envoy if used</returns>
+        </member>
+        <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.HasValidFaction(RimWorld.Planet.WorldObject)">
+            <summary>
+            Checks if a worldObject is not part of the player or their empire faction
+            </summary>
+            <param name="worldObject"></param>
+            <returns>true if the faction linked isn't from the player or their empire faction, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.Postfix(RimWorld.Planet.WorldObject@,System.Collections.Generic.IEnumerable{Verse.Gizmo}@)">
+            <summary>
+            This Postfix adds Gizmos on settlements not owned by the player or their empire
+            </summary>
+            <param name="__instance"></param>
+            <param name="__result"></param>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeliverSupplies.DeliveryToFightTransition(Verse.AI.Group.StateGraph)">
+            <summary>
+            This <c>Transition</c> switches the delivery <c>Pawns</c> from delivery mode to fighting mode. It drops their items if they carry any and notifies the player of what's about to happen 
+            </summary>
+            <param name="stateGraph"></param>
+            <returns>the Transition</returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeliverSupplies.RefreshFightTransition(Verse.AI.Group.StateGraph)">
+            <summary>
+            This <c>Transition</c> fixes a bug, where sometimes some <c>Pawn</c>s don't get transitioned into this phase even though they should
+            tbh, I (dani) don't know if this is still needed, but it doesn't seem to hurt being there either
+            </summary>
+            <param name="stateGraph"></param>
+            <returns>the Transition</returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeliverSupplies.FightingToLeavingTransition(Verse.AI.Group.StateGraph)">
+            <summary>
+            Transitions from fighting to leaving, when the map has been peaceful for 1000 ticks
+            </summary>
+            <param name="stateGraph"></param>
+            <returns>the Transition</returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeliverSupplies.LeavingToFightTransition(Verse.AI.Group.StateGraph)">
+            <summary>
+            This <c>Transition</c> switches the delivery <c>Pawns</c> from leaving mode to fighting mode. It notifies the player of what's about to happen 
+            </summary>
+            <param name="stateGraph"></param>
+            <returns>the Transition</returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeliverSupplies.CanNotDeliverToLeavingTransition(Verse.AI.Group.StateGraph)">
+            <summary>
+            This <c>Transition</c> covers the case in which the delivering pawns can't find a path to the delivery tax spot, for example if the locks mod is used.
+            Without this transition, pawns end up dropping their delivery and starving to death
+            </summary>
+            <param name="stateGraph"></param>
+            <returns>the Transition</returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.#ctor">
+            <summary>
+            Default constructor, meant to only be used when creating the job object during loading
+            </summary>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.#ctor(Verse.IntVec3,FactionColonies.MercenarySquadFC,System.Int32)">
+            <summary>
+            Creates a new <c>LordJob</c> that controls any pawn during military deployment.
+            <paramref name="currentOrderPosition"/> is the initial deployment position of the deployed pawns
+            <paramref name="squad"/> is the squad that contains the pawns deployed
+            <paramref name="maxDeploymentTime"/> is the time a squad has before being forced into the leave command. It is set at 30000 by default
+            </summary>
+            <param name="currentOrderPosition"></param>
+            <param name="squad"></param>
+            <param name="maxDeploymentTime"></param>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.Init">
+            <summary>
+            Initializes some variables after loading is complete or when the deployment is first started
+            </summary>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.UpdateOrderPosition">
+            <summary>
+            Grabs a new currentOrderPosition and updates the toils with it
+            </summary>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.AnyThingToLeavingTransitions(Verse.AI.Group.StateGraph)">
+            <summary>
+            Creates a list of transitions to allow for leaving from any state when time runs out
+            </summary>
+            <param name="stateGraph"></param>
+            <returns>the Transitions</returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.AnyPlayerChoiceTransition(Verse.AI.Group.StateGraph)">
+            <summary>
+            This generates all transitions needed for the control window to work
+            </summary>
+            <param name="stateGraph"></param>
+            <returns>the Transitions</returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.RefreshMovementTransition(Verse.AI.Group.StateGraph)">
+            <summary>
+            If the player selects a new position to move to, the currentOrderPosition must be updated, and the jobs restarted.
+            This <c>Transition</c> ensures that.
+            </summary>
+            <param name="stateGraph"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactionColonies.LordJob_DeployMilitary.CreateGraph">
+            <summary>
+            The Order of toils in the StateGraph MUST be the same as in the MilitaryOrder enum
+            </summary>
+            <returns>a StateGraph</returns>
+        </member>
+        <member name="M:FactionColonies.MercenarySquadFC.InitiateCooldownEvent">
+            <summary>
+            Makes the squad go into cooldown. Only works on a settlements main squad
+            </summary>
+            <returns>True if successful, false otherwise</returns>
+        </member>
+        <member name="T:FactionColonies.FactionFC">
+            <summary>
+            World Comps For Empire.
+            </summary>
+        </member>
+        <member name="F:FactionColonies.FactionFC.settlements">
+            <summary>
+            Used by other mods to find our settlements. Move, rename, or otherwise modify at your own peril
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FCEvent.DefineEvent(FactionColonies.FactionFC,System.Int32,System.Int32)">
+            <summary>
+            Defines parameters of event with custom description
+            </summary>
+            <param name="f">FactionFC object</param>
+            <param name="mapLocation">Location of the event object</param>
+            <param name="timeToFinish">Time of event's completion</param>
+        </member>
+        <member name="M:FactionColonies.FCRoadBuilder.GetRoadQueue(System.String)">
+            <summary>
+            Gets the road queue specified by planetName.
+            </summary>
+            <returns>The road queue. May be null.</returns>
+            <param name="planetName">Planet name.</param>
+        </member>
+        <member name="M:FactionColonies.FCRoadBuilder.FlagUpdateRoadQueues">
+            <summary>
+            Flags all road queues to update whenever they are able.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FCPlanetRoadQueue.BuildRoadSegments">
+            <summary>
+            Updates processed settlements if needed, checks if the current planet is correct, 
+            and that it is time to build the segements, then builds the segments
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FCPlanetRoadQueue.ResetPaths">
+            <summary>
+            Resets the paths progress. Does not recalculate the paths.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FCRoadPath.BuildSegment(RimWorld.RoadDef)">
+            <summary>
+             Builds 1 segment of road. Returns if a segment was built
+            </summary>
+            <returns> this.IsCompleted </returns>
+            <param name="roadDef">Road def.</param>
+        </member>
+        <member name="T:FactionColonies.SettlementFC">
+            <summary>
+            The Object represents the settlement
+            </summary>
+        </member>
+        <member name="F:FactionColonies.SettlementFC.worldSettlement">
+            <summary>
+            Used by other mods to get to our world object through the list of SettlementFC. Rename at your own risk.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.SettlementFC.#ctor">
+            <summary>
+            Required for saving/loading
+            </summary>
+        </member>
+        <member name="M:FactionColonies.SettlementFC.upgradeSettlement(System.Int32)">
+            <summary>
+            Removed level cap, which used to be 10 and is hardcoded.
+            But... Why?
+            </summary>
+            <param name="times"></param>
+        </member>
+        <member name="M:FactionColonies.SettlementFC.updateStats">
+            <summary>
+            Where stats of the settlement is updated.
+            Tons of hardcoded traits here.
+            once we migrate to stat based system we`ll have to rewrite all of these.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.SettlementFC.PrepareDestroyWorldObject">
+            <summary>
+            Compatibility focused: this object should only be destroyed very deliberately, else another object is likely trying to handle negative combat resolution against this settlement.
+            </summary>
+        </member>
+        <member name="T:FactionColonies.util.ListExtensions">
+            <summary>
+            This class provides extensions for some kinds of lists
+            </summary>
+        </member>
+        <member name="M:FactionColonies.util.ListExtensions.ToLetterString(System.Collections.Generic.IEnumerable{Verse.Thing})">
+            <summary>
+            Transforms a <paramref name="list"/> into a string<para />
+            Example (The linebreaks are twice as big as ingame):<para />
+            Steel 75x<para />
+            Wood 150x
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FactionColonies.util.MapCellAndTileExtensions">
+            <summary>
+            This class provides extentions for Tiles, Cells and Maps
+            </summary>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.CellBlockedByThing(Verse.IntVec3,Verse.Map)">
+            <summary>
+            Checks if a given <paramref name="targetCell"/> on a <paramref name="map"/> is blocked
+            </summary>
+            <param name="targetCell"></param>
+            <param name="map"></param>
+            <returns>true if it is blocked, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.CellIsRoofedNaturalOrThick(Verse.IntVec3,Verse.Map)">
+            <summary>
+            Checks if a <paramref name="targetCell"/> is naturally or mountain roofed
+            </summary>
+            <param name="targetCell"></param>
+            <param name="map"></param>
+            <returns>true if natural or mountain roofed, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.CellFulfilsSpaceRequirementForSkyFaller(Verse.IntVec3,Verse.IntVec2,Verse.Map,System.Boolean)">
+            <summary>
+            Checks if a given space with size <paramref name="spaceSize"/> at <paramref name="targetCell"/> fulfills the space requirements of a SkyFaller
+            </summary>
+            <param name="targetCell"></param>
+            <param name="spaceSize"></param>
+            <param name="map"></param>
+            <returns>true if there is enough space, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.HasDownedForFaction(Verse.Map,RimWorld.Faction)">
+            <param name="map"></param>
+            <param name="faction"></param>
+            <returns>true if the <paramref name="map"/> contains downed pawns for a <paramref name="faction"/>, false if it doesn't</returns>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.IsValidTile(System.Int32)">
+            <summary>
+            Checks if a <paramref name="tile"/> is valid
+            </summary>
+            <param name="tile"></param>
+            <returns>true if the tile >= 0, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.AreValidTiles(System.ValueTuple{System.Int32,System.Int32})">
+            <summary>
+            Checks if all <paramref name="tiles"/> in a touple are valid tiles
+            </summary>
+            <param name="tiles"></param>
+            <returns>true if all tiles are >= 0, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.IsInAnyShuttleRange(System.Int32)">
+            <summary>
+            Checks if the given <paramref name="tile"/> is inside a shuttle ports range
+            </summary>
+            <param name="tile"></param>
+            <returns>true if it is, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.util.MapCellAndTileExtensions.AreTilesInAnyShuttleRange(System.ValueTuple{System.Int32,System.Int32})">
+            <summary>
+            Checks if a touple of tiles is inside any shuttle ports range
+            </summary>
+            <param name="tiles"></param>
+            <returns>true if they are, false otherwise</returns>
+        </member>
+        <member name="M:FactionColonies.util.StateGraphExtensions.AddTransitions(Verse.AI.Group.StateGraph,System.Collections.Generic.IEnumerable{Verse.AI.Group.Transition})">
+            <summary>
+            Same as <paramref name="stateGraph"/>.AddTransition, but for multiple <paramref name="transitions"/>
+            </summary>
+            <param name="stateGraph"></param>
+            <param name="transitions"></param>
+        </member>
+        <member name="T:FactionColonies.util.TextGen">
+            <summary>
+            Arguably only generates short names so far, but should contain everything "random text" in future
+            </summary>
+        </member>
+        <member name="M:FactionColonies.util.TextGen.ToShortName(System.String)">
+            <summary>
+            Converts the given string <paramref name="name"/> into a shorter version. The resulting string contains the first word and every uppercase char of the following words
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactionColonies.PawnKindDefExtensions.IsAnimalAndAllowed(Verse.PawnKindDef)">
+            <summary>
+            	Checks if a given <c>PawnKindDef</c> <paramref name="pawnKindDef"/> is an Animal and if it is not blacklisted by tradeTag 
+            </summary>
+            <param name="pawnKindDef"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactionColonies.DeployedMilitaryCommandMenu.DoSelectSquadCommand">
+            <summary>
+            Lets the user select a squad from the squads active on the map
+            </summary>
+        </member>
+        <member name="M:FactionColonies.DeployedMilitaryCommandMenu.DoAttackCommand">
+            <summary>
+            Makes the currently active squad execute the attack command
+            </summary>
+        </member>
+        <member name="M:FactionColonies.DeployedMilitaryCommandMenu.DoMoveCommand">
+            <summary>
+            Makes the currently active squad execute the move command. The move command is actually a point defence command.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.DeployedMilitaryCommandMenu.DoLeaveCommand">
+            <summary>
+            Makes the currently selected squad immediately inactive and leave the map
+            </summary>
+        </member>
+        <member name="M:FactionColonies.DeployedMilitaryCommandMenu.DoDebugCommand">
+            <summary>
+            If the dev mode is enabled, despawnes all squads and disables their deployment
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.#ctor">
+            <summary>
+            Constructs a PatchNotesDisplayWindow class and saves the current Text.Font, Text.Anchor and GUI.color
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.#ctor(System.String)">
+            <summary>
+            Constructs a PatchNotesDisplayWindow class and saves the current Text.Font, Text.Anchor and GUI.color and gives it the given <paramref name="title"/>
+            </summary>
+            <param name="title"></param>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DoWindowContents(UnityEngine.Rect)">
+            <summary>
+            This function draws the contents of this window class. The Rects were laid out using NesGui
+            </summary>
+            <param name="inRect"></param>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.FixScrollingBug">
+            <summary>
+            Fixes a bug where a note being opened in the first frame causes the scrolling bars to not appear as long as it isn't closed
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawImageContent">
+            <summary>
+            Draws the Image related content of any selected Def or a text instructing the user to select a def
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawLinkButtons">
+            <summary>
+            Draws buttons that open links defined in the defs
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.MakeToolTip">
+            <summary>
+            Displays a tooltip instructing the user to click to enlargen an image.
+            Automatically scales the area in which the tool tip is displayed based on buttons being displayed.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawImageContentOfDef">
+            <summary>
+            retrieves the list of Images from the openDef and displays that image
+            Also draws the controls
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawImageSelectors(System.Int32)">
+            <summary>
+            Draws two buttons labeled that change which image is displayed. <paramref name="max"/> is the last index of images displayable
+            </summary>
+            <param name="max"></param>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawImageSelector(UnityEngine.Rect,System.String,System.Func{System.Boolean},System.Action)">
+            <summary>
+            Draws a grey button into a given <paramref name="buttonRect"/> with the <paramref name="buttonLabel"/> 
+            when <paramref name="predicate"/> is true that executes <paramref name="action"/> 
+            when pressed
+            </summary>
+            <param name="buttonRect"></param>
+            <param name="buttonLabel"></param>
+            <param name="predicate"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawImageContentMissing(System.String,UnityEngine.Color)">
+            <summary>
+            Displays a warning in place of the image notifying the user of the <paramref name="reason"/> why no image can be displayed
+            </summary>
+            <param name="reason"></param>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawPatchNotes">
+            <summary>
+            Draws the buttons used to select which patch notes to display and the patch notes
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawDividers">
+            <summary>
+            Draws the lines that separate the title, patch notes and patch note images
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.DrawTitle">
+            <summary>
+            Draws this windows title and the close button
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.ResetTextAndColor">
+            <summary>
+            Resets the Text.Font, Text.Anchor and GUI.color setting
+            </summary>
+        </member>
+        <member name="M:FactionColonies.PatchNotesDisplayWindow.CalculateScrollViewSize">
+            <summary>
+            Calculates the size of the PatchNotesScrollArea Rect
+            </summary>
+        </member>
+        <member name="P:FactionColonies.Searchable_FloatMenu.ForceOpenOption">
+            <summary>
+            Creates a floatmenuoption that allows the player to lock the Floatmenu open
+            </summary>
+        </member>
+        <member name="P:FactionColonies.Searchable_FloatMenu.CanBeClosed">
+            <summary>
+            Decides if the window should close
+            </summary>
+        </member>
+        <member name="P:FactionColonies.Searchable_FloatMenu.ColumnWidth">
+            <summary>
+            Calculates the required Width dynamically
+            </summary>
+        </member>
+        <member name="M:FactionColonies.Searchable_FloatMenu.#ctor(System.Collections.Generic.List{Verse.FloatMenuOption},System.Boolean,System.Boolean,System.Char)">
+            <summary>
+            Like a normal <c>FloatMenu</c>, but searchable!
+            </summary>
+            <param name="options"></param>
+            <param name="ignoreBeforeChar"></param>
+            <param name="useIgnoreBeforeChar"></param>
+        </member>
+        <member name="M:FactionColonies.Searchable_FloatMenu.AddForceOpenOption(System.Collections.Generic.List{Verse.FloatMenuOption})">
+            <summary>
+            Adds the ForceOpenOption to the FloatMenu <paramref name="options"/>
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactionColonies.Searchable_FloatMenu.FakeAddStayOpenOption(System.Collections.Generic.List{Verse.FloatMenuOption},System.Boolean)">
+            <summary>
+            Adds a fake option to the <paramref name="options"/>, only need this for the base constructor
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactionColonies.Searchable_FloatMenu.ExtraOnGUI">
+            <summary>
+            Adds the search bar and search bar functionality
+            </summary>
+        </member>
+        <member name="M:FactionColonies.SettlementCustomizeWindowFc.Close(System.Boolean)">
+            <summary>
+            Save variables on closing
+            </summary>
+            <param name="doCloseSound"></param>
+        </member>
+        <member name="M:FactionColonies.SettlementUpgradeWindowFc.UpgradeSettlement">
+            <summary>
+            Attempts to create an upgrading <c>FCEvent</c> for a <c>SettlementFC</c>.
+            </summary>
+            <returns>A message describing if the process was successful or not, including a reason in case it was not</returns>
+        </member>
+        <member name="T:FactionColonies.SettlementWindowFc">
+            <summary>
+            Settlement View wnd.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.SettlementWindowFc.DoWindowContents(UnityEngine.Rect)">
+            <summary>
+            Draw window content, this is where we add the button to quick switch.
+            </summary>
+            <param name="inRect"></param>
+        </member>
+        <member name="M:FactionColonies.SettlementWindowFc.IsAllowedTranslation(System.Boolean)">
+            <summary>
+            Transforms the given bool <paramref name="var"/> into it's keyed translation
+            </summary>
+            <param name="var"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactionColonies.SettlementWindowFc.TitheCustomizationClicked(FactionColonies.ResourceFC,FactionColonies.ResourceType)">
+            <summary>
+            Handles the tithe cutomization FloatMenuOptions for any given <paramref name="resource"/> with <paramref name="resourceType"/>
+            </summary>
+            <param name="resource"></param>
+            <param name="resourceType"></param>
+        </member>
+        <member name="M:FactionColonies.SettlementWindowFc.DoTitheCheckboxAction(System.Boolean,FactionColonies.ResourceFC)">
+            <summary>
+            If <paramref name="isClicked"/>, changes the <paramref name="resource"/>'s tithe status and updates some necessary things
+            </summary>
+            <param name="isClicked"></param>
+            <param name="resource"></param>
+        </member>
+        <member name="M:FactionColonies.SettlementWindowFc.DoResourceDescriptionButton(FactionColonies.ResourceFC,FactionColonies.ResourceType,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Draws a <paramref name="resource"/>'s description window
+            </summary>
+            <param name="resource"></param>
+            <param name="resourceType"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="spacing"></param>
+        </member>
+        <member name="M:FactionColonies.SettlementWindowFc.IncreaseWorkers(FactionColonies.ResourceType,System.Boolean)">
+            <summary>
+            Increases the amount of workers in a settlement. Decreases if <paramref name="negative"/> is true. Modifies the amount based on if shift/ctrl are held
+            </summary>
+            <param name="resourceType"></param>
+            <param name="negative"></param>
+        </member>
+        <member name="T:FactionColonies.WorldSettlementFC">
+            <summary>
+                WorldObject that in many ways re-implements Settlement.cs from Rimworld.Planet. May cause compatibility issues with
+                other mods that rely on finding Settlement objects on the world map. Recommend testing this extensively with mods
+                like SoS2, RimWar, or any mods that modify, collect, or deep save world objects before publishing changes
+            </summary>
+        </member>
+        <member name="F:FactionColonies.WorldSettlementFC.destroyFlag">
+            <summary>
+                A flag meant to indicate whether or not this settlement is meant for actual destruction; used to override
+                WorldObject.Destroy() for compatibility purposes
+            </summary>
+        </member>
+        <member name="M:FactionColonies.WorldSettlementFC.PrepareDestroy">
+            <summary>
+                Indicate that this should be destroyed when WorldObject.Destroy() is called
+            </summary>
+        </member>
+        <member name="M:FactionColonies.WorldSettlementFC.Destroy">
+            <summary>
+                Compatibility focused: this object should only be destroyed very deliberately, else another object is likely trying
+                to handle negative combat resolution against this settlement.
+            </summary>
+        </member>
+    </members>
+</doc>

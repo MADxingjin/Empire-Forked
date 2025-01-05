@@ -10,6 +10,9 @@ using Verse.Sound;
 
 namespace FactionColonies
 {
+    /// <summary>
+    /// Settlement View wnd.
+    /// </summary>
     public sealed class SettlementWindowFc : Window
     {
         public override Vector2 InitialSize
@@ -97,7 +100,10 @@ namespace FactionColonies
             preventCameraMotion = false;
         }
 
-
+        /// <summary>
+        /// Draw window content, this is where we add the button to quick switch.
+        /// </summary>
+        /// <param name="inRect"></param>
         public override void DoWindowContents(Rect inRect)
         {
             GameFont fontBefore = Text.Font;
@@ -365,7 +371,7 @@ namespace FactionColonies
             Text.Font = GameFont.Tiny;
             Widgets.Label(new Rect(50, 25, 150, 20), settlement.title); //returnSettlement().title);
 
-            //Draw town location flabor text
+            //Draw town location flavor text
             Text.Font = GameFont.Tiny;
             Widgets.Label(new Rect(55, 40, 470, 20),
                 "Located".Translate() + " " +
@@ -379,6 +385,20 @@ namespace FactionColonies
                 //if click faction customize button
                 Find.WindowStack.Add(new SettlementCustomizeWindowFc(settlement));
                 //Log.Message("Settlement customize clicked");
+            }
+            //Experimental Draw A button to switch to next settlement
+            if (Widgets.ButtonText(new Rect(400, 5, 20, 20), ">>"))
+            {
+                this.Close();
+
+                //Grab the id of current settlement in faction list
+                int pos = factionfc.settlements.FindIndex(x=> x ==settlement);
+                if((pos+1) >= factionfc.settlements.Count)
+                Find.WindowStack.Add(new SettlementWindowFc(factionfc.settlements[0]));
+                else
+                {
+                    Find.WindowStack.Add(new SettlementWindowFc(factionfc.settlements[pos+1]));
+                }
             }
         }
 
