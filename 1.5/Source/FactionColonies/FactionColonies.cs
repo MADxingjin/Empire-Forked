@@ -187,23 +187,32 @@ namespace FactionColonies
             return points;
         }
 
+/// <summary>
+/// Test if PlayerFaction`s tech level can make target thing.
+/// TODO Add 2 new deflist for additional filter to bypass research check or techlevel check. 
+/// </summary>
+/// <param name="thing">the thing to test with</param>
+/// <param name="includeSingleUse">Should allow singleUse weap to be crafted ,mostly for Those rocket launcher in vanilla game.</param>
+/// <returns></returns>
         public static bool canCraftItem(ThingDef thing, bool includeSingleUse = false)
         {
             bool canCraft = true;
             if (thing.recipeMaker != null)
             {
+                //Not a dupe check, this one is made when thing has multiple research lock.
                 if (thing.recipeMaker.researchPrerequisites != null)
                 {
                     foreach (ResearchProjectDef research in thing.recipeMaker.researchPrerequisites)
                     {
                         if (!(Find.ResearchManager.GetProgress(research) >= research.baseCost))
                         {
-                            //research is not good
+                            //not researched ,craft recipe not unlocked
                             canCraft = false;
+                            return canCraft;
                         }
                     }
                 }
-
+                // Thing has no multiple research lock, now see if thing has one single research lock
                 if (thing.recipeMaker.researchPrerequisite != null)
                 {
                     if (!(Find.ResearchManager.GetProgress(thing.recipeMaker.researchPrerequisite) >=
@@ -211,6 +220,7 @@ namespace FactionColonies
                     {
                         //research is not good
                         canCraft = false;
+                        return canCraft;
                     }
                 }
             }

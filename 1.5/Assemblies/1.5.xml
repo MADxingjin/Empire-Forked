@@ -205,10 +205,11 @@
             <returns>the generated FloatMenuOption</returns>
         </member>
         <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.HostileAction(FactionColonies.FactionFC,RimWorld.Faction,System.Int32)">
-            <param name="factionFC"></param>
-            <param name="faction"></param>
-            <param name="tile"></param>
-            <returns>A <c>Command_Action</c> that creates a <c>FloatMenu</c> displaying hostile actions a player can take against a settlement</returns>
+            <summary> </summary>
+             <param name="factionFC"></param>
+             <param name="faction"></param>
+             <param name="tile"></param>
+             <returns>A <c>Command_Action</c> that creates a <c>FloatMenu</c> displaying hostile actions a player can take against a settlement</returns>
         </member>
         <member name="M:FactionColonies.AddButtonsToNonEmpireObjects.PeacefulAction(FactionColonies.FactionFC,RimWorld.Faction)">
             <param name="factionFC"></param>
@@ -406,6 +407,21 @@
         <member name="M:FactionColonies.SettlementFC.PrepareDestroyWorldObject">
             <summary>
             Compatibility focused: this object should only be destroyed very deliberately, else another object is likely trying to handle negative combat resolution against this settlement.
+            </summary>
+        </member>
+        <member name="M:FactionColonies.SettlementFC.SendMilitary(System.Int32,System.String,FactionColonies.util.MilitaryJob,System.Int32,RimWorld.Faction)">
+            <summary>
+            
+            </summary>
+            <param name="location"></param>
+            <param name="planet"></param>
+            <param name="job"></param>
+            <param name="timeToFinish"></param>
+            <param name="enemy"></param>
+        </member>
+        <member name="M:FactionColonies.SettlementFC.processMilitaryEvent">
+            <summary>
+            TODO separate to event self proc logic.The evt should then carry the mil power at the moment the evt is fired.
             </summary>
         </member>
         <member name="T:FactionColonies.util.ListExtensions">

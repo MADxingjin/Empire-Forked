@@ -263,6 +263,11 @@ namespace FactionColonies
             return things;
         }
 
+/// <summary>
+/// Set thing filter for thing tithe for the given resource(currently hardcoded).
+/// </summary>
+/// <param name="settlement"></param>
+/// <param name="resourceType"></param>
         public static void resetThingFilter(in SettlementFC settlement, ResourceType resourceType)
         {
             //Log.Message(resourceID.ToString());
@@ -286,6 +291,12 @@ namespace FactionColonies
             }
         }
 
+/// <summary>
+/// TODO Stupid hardcoded filter here.
+/// </summary>
+/// <param name="filter"></param>
+/// <param name="resourceType"></param>
+/// <param name="techLevel"></param>
         private static void filterResource(ThingFilter filter, ResourceType resourceType, TechLevel techLevel)
         {
             switch (resourceType)
@@ -420,6 +431,12 @@ namespace FactionColonies
             }
         }
 
+/// <summary>
+/// This is where we populate the thing list for tithe filter `s initial phase
+/// TODO make it recongize 
+/// </summary>
+/// <param name="resourceType"></param>
+/// <returns></returns>
         public static List<ThingDef> debugGenerateTithe(ResourceType resourceType)
         {
             FactionFC faction = Find.World.GetComponent<FactionFC>();

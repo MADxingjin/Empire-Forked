@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Empire 1_5 (Continued)</name>
-	<author>Saakra</author>
+	<name>Empire-Forked(FactionColonies)</name>
+	<author>Saakra,MADxingjin</author>
 	<packageId>Saakra.Empire.dev</packageId>
 	<url>https://discord.gg/f3zFQqA</url>
 	<supportedVersions>
@@ -18,7 +18,11 @@
 		</li>
 	</modDependencies>
 	
-	<description>Spread your rule across the Rimworld with self governing colonies that are loyal to you and you alone. Command them to fight in your name, and destroy your enemies. But politics is always a deadly game.
+	<description>
+	Forked version of mod Empire, thanks Saakra for creating the mod in first place. and other who maintained update version for it.
+	
+	# Original Desc below.
+	Spread your rule across the Rimworld with self governing colonies that are loyal to you and you alone. Command them to fight in your name, and destroy your enemies. But politics is always a deadly game.
 
 Events will periodically influence your colonies, or your faction as a whole. You must decide how best to respond to these situations. And beware, a poor guiding hand will have consequences, your faction may lose faith in your leadership entirely, and take their destiny into their own hands.
 

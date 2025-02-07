@@ -7,6 +7,10 @@ using Verse;
 
 namespace FactionColonies
 {
+    /// <summary>
+    /// TODO Decouple these class from this file.
+    /// Make ResourceFC a deftype with extendable thingcate & thingfilter to use. 
+    /// </summary>
     public class ResourceFC : IExposable
     {
         public string name;

@@ -807,7 +807,14 @@ namespace FactionColonies
         {
             get { return (float) Math.Round(prosperity, 1); }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="planet"></param>
+        /// <param name="job"></param>
+        /// <param name="timeToFinish"></param>
+        /// <param name="enemy"></param>
         public void SendMilitary(int location, string planet, MilitaryJob job, int timeToFinish, Faction enemy)
         {
             FactionFC factionfc = Find.World.GetComponent<FactionFC>();
@@ -864,7 +871,9 @@ namespace FactionColonies
                 //if not busy
             }
         }
-
+        /// <summary>
+        /// TODO separate to event self proc logic.The evt should then carry the mil power at the moment the evt is fired.
+        /// </summary>
         public void processMilitaryEvent()
         {
             FactionFC faction = Find.World.GetComponent<FactionFC>();
@@ -971,6 +980,7 @@ namespace FactionColonies
                     if (winner == 0)
                     {
                         //if won
+                        //TODO make experience scale based on battle size(pops we engaged /settlement pop count * mil mod)
                         faction.addExperienceToFactionLevel(5f);
 
                         string text = "";
@@ -1593,6 +1603,11 @@ namespace FactionColonies
             return (float) Math.Round(allotted * 100);
         }
 
+/// <summary>
+/// The Func that creats thing tithe.
+/// </summary>
+/// <param name="industriousTaxPercentageBoost"></param>
+/// <returns>thing tithe as selected in list.</returns>
         public List<Thing> createTithe(float industriousTaxPercentageBoost)
         {
             FactionFC faction = Find.World.GetComponent<FactionFC>();
