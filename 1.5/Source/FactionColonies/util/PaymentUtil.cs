@@ -292,7 +292,7 @@ namespace FactionColonies
         }
 
 /// <summary>
-/// TODO Stupid hardcoded filter here.
+/// TODO Stupid hardcoded filter here. reslove this in our modern def resolve reference stage instead.
 /// </summary>
 /// <param name="filter"></param>
 /// <param name="resourceType"></param>

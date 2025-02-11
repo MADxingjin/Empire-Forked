@@ -1080,7 +1080,9 @@ namespace FactionColonies
             upkeep = getTotalUpkeep();
             profit = income - upkeep;
         }
-
+        /// <summary>
+        /// This should be separated into their own cates.
+        /// </summary>
         public void updateTotalResources()
         {
             foreach (ResourceType resourceType in ResourceUtils.resourceTypes)
