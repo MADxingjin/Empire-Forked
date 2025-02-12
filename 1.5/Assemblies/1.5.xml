@@ -124,6 +124,15 @@
             TODO Separate to another .cs file.
             </summary>
         </member>
+        <member name="M:FactionColonies.FactionColonies.canCraftItem(Verse.ThingDef,System.Boolean)">
+            <summary>
+            Test if PlayerFaction`s tech level can make target thing.
+            TODO Add 2 new deflist for additional filter to bypass research check or techlevel check. 
+            </summary>
+            <param name="thing">the thing to test with</param>
+            <param name="includeSingleUse">Should allow singleUse weap to be crafted ,mostly for Those rocket launcher in vanilla game.</param>
+            <returns></returns>
+        </member>
         <member name="M:FactionColonies.FactionColonies.SpawnSquad(FactionColonies.SettlementFC,FactionColonies.MercenarySquadFC,Verse.IntVec3,System.Boolean)">
             <summary>
             Internal method used to spawn a <paramref name="settlement"/>'s squad for military deployment
@@ -327,6 +336,72 @@
             </summary>
             <returns>True if successful, false otherwise</returns>
         </member>
+        <member name="T:FactionColonies.Modern.FCResourceTypeDef">
+            <summary>
+            
+            </summary> 
+        </member>
+        <member name="F:FactionColonies.Modern.FCResourceTypeDef.techLevel">
+            <summary>
+            At which tech level this resource will appear in settlement`s list and can be assigned to workers or passive generation buildings as target
+            </summary>
+        </member>
+        <member name="F:FactionColonies.Modern.FCResourceTypeDef.TitheBase">
+            <summary>
+            A starting value for default tithe rate for this type of resource, if not specified(which is the case for most resource, 0)
+            </summary>
+        </member>
+        <member name="F:FactionColonies.Modern.FCResourceTypeDef.TitheFilterCategories">
+            <summary>
+            The thingcategories this resource type supports to become thing tithe.
+            </summary>
+        </member>
+        <member name="F:FactionColonies.Modern.FCResourceTypeDef.TitheFilterSpecific">
+            <summary>
+            The things this resource type supports to become thing tithe;
+            </summary> 
+        </member>
+        <member name="F:FactionColonies.Modern.FCResourceTypeDef.TitheFilterCategoriesDenylist">
+            <summary>
+            For filtering out a specific sub category from bigger one.
+            </summary>
+        </member>
+        <member name="F:FactionColonies.Modern.FCResourceTypeDef.TitheFilterSpecificDenylist">
+            <summary>
+            For filtering a specific thing from the pool.
+            </summary>
+        </member>
+        <member name="F:FactionColonies.Modern.FCResourceTypeDef.TitheFilterStuffCategories">
+            <summary>
+            For those tricky needs, maybe useful later on. Add stuff thing to thing tithe filter based on give Stuffcategories.
+            </summary>
+        </member>
+        <member name="T:FactionColonies.Modern.FCResource">
+            <summary>
+            TODO Move ItemTitheThingFilter calc here.
+            Also We now move 
+            </summary>
+        </member>
+        <member name="P:FactionColonies.Modern.FCResource.ProdFinal">
+            <summary>
+            We no longer store offset in resource itself,instead now with a def as backend, event modifier in settlement stack can now iterate through FCResource.defs for match.
+            </summary>
+        </member>
+        <member name="P:FactionColonies.Modern.FCResource.TitheBase">
+            <summary>
+            Base tithe rate,we directly get this from def.
+            </summary>
+        </member>
+        <member name="P:FactionColonies.Modern.FCResource.TitheFinal">
+            <summary>
+            Final tithe rate of production in silver,this can goes beyond 1.(Intentional), if this val>1,Item tithe will have its itemcost > pay full in silver.
+            </summary>
+        </member>
+        <member name="P:FactionColonies.Modern.FCResource.CostFinal">
+            <summary>
+            Cost in silver per worker assigned to this resource.
+            </summary>
+        </member>
         <member name="T:FactionColonies.FactionFC">
             <summary>
             World Comps For Empire.
@@ -335,6 +410,11 @@
         <member name="F:FactionColonies.FactionFC.settlements">
             <summary>
             Used by other mods to find our settlements. Move, rename, or otherwise modify at your own peril
+            </summary>
+        </member>
+        <member name="M:FactionColonies.FactionFC.updateTotalResources">
+            <summary>
+            This should be separated into their own cates.
             </summary>
         </member>
         <member name="M:FactionColonies.FCEvent.DefineEvent(FactionColonies.FactionFC,System.Int32,System.Int32)">
@@ -375,6 +455,7 @@
             <returns> this.IsCompleted </returns>
             <param name="roadDef">Road def.</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:FactionColonies.ResourceFC" -->
         <member name="T:FactionColonies.SettlementFC">
             <summary>
             The Object represents the settlement
@@ -423,6 +504,13 @@
             <summary>
             TODO separate to event self proc logic.The evt should then carry the mil power at the moment the evt is fired.
             </summary>
+        </member>
+        <member name="M:FactionColonies.SettlementFC.createTithe(System.Single)">
+            <summary>
+            The Func that creats thing tithe.
+            </summary>
+            <param name="industriousTaxPercentageBoost"></param>
+            <returns>thing tithe as selected in list.</returns>
         </member>
         <member name="T:FactionColonies.util.ListExtensions">
             <summary>
@@ -526,6 +614,29 @@
             	Checks if a given <c>PawnKindDef</c> <paramref name="pawnKindDef"/> is an Animal and if it is not blacklisted by tradeTag 
             </summary>
             <param name="pawnKindDef"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactionColonies.PaymentUtil.resetThingFilter(FactionColonies.SettlementFC@,FactionColonies.ResourceType)">
+            <summary>
+            Set thing filter for thing tithe for the given resource(currently hardcoded).
+            </summary>
+            <param name="settlement"></param>
+            <param name="resourceType"></param>
+        </member>
+        <member name="M:FactionColonies.PaymentUtil.filterResource(Verse.ThingFilter,FactionColonies.ResourceType,RimWorld.TechLevel)">
+            <summary>
+            TODO Stupid hardcoded filter here. reslove this in our modern def resolve reference stage instead.
+            </summary>
+            <param name="filter"></param>
+            <param name="resourceType"></param>
+            <param name="techLevel"></param>
+        </member>
+        <member name="M:FactionColonies.PaymentUtil.debugGenerateTithe(FactionColonies.ResourceType)">
+            <summary>
+            This is where we populate the thing list for tithe filter `s initial phase
+            TODO make it recongize 
+            </summary>
+            <param name="resourceType"></param>
             <returns></returns>
         </member>
         <member name="M:FactionColonies.DeployedMilitaryCommandMenu.DoSelectSquadCommand">

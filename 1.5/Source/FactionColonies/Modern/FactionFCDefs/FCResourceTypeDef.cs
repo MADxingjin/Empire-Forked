@@ -18,9 +18,11 @@ namespace FactionColonies.Modern {
         public TechLevel techLevel = TechLevel.Animal;
 
         /// <summary>
-        /// A starting value for default tithe rate for this type of resource, if not specified(which is most resource, 0)
+        /// A starting value for default tithe rate for this type of resource, if not specified(which is the case for most resource, 0)
         /// </summary>
         public double TitheBase = 0d;
+
+        public double CostBase = 0d;
 
 /// <summary>
 /// The thingcategories this resource type supports to become thing tithe.
@@ -41,7 +43,7 @@ namespace FactionColonies.Modern {
         public List<ThingDef> TitheFilterSpecificDenylist = null;
 
 /// <summary>
-/// For those trick needs, maybe useful later on. Add stuff thing to thing tithe filter based on give Stuffcategories.
+/// For those tricky needs, maybe useful later on. Add stuff thing to thing tithe filter based on give Stuffcategories.
 /// </summary>
         public List<StuffCategoryDef> TitheFilterStuffCategories = null;
 
@@ -52,6 +54,8 @@ namespace FactionColonies.Modern {
         #endregion
 
         #region Func
+
+
 
         public override void ResolveReferences()
         {

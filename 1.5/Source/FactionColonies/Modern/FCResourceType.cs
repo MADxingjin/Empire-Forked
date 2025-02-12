@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
 namespace FactionColonies.Modern{
     /// <summary>
     /// TODO Move ItemTitheThingFilter calc here.
+    /// Also We now move 
     /// </summary>
     public class FCResource : IExposable
     {
@@ -22,15 +24,16 @@ namespace FactionColonies.Modern{
         /// Base tithe rate,we directly get this from def.
         /// </summary>
         public double TitheBase => def.TitheBase;
-
-        public double TitheMult, TitheOffset, TitheFlat;
+        public double TitheMult;
+            public double TitheOffset, TitheFlat;
 
         /// <summary>
         /// Final tithe rate of production in silver,this can goes beyond 1.(Intentional), if this val>1,Item tithe will have its itemcost > pay full in silver.
         /// </summary>
         public double TitheFinal => ((TitheBase + TitheOffset) * TitheMult) + TitheFlat;
 
-        public double CostBase, CostMult, CostOffset, CostFlat;
+        public double CostBase => def.CostBase;
+        public double CostMult, CostOffset, CostFlat;
 
         /// <summary>
         /// Cost in silver per worker assigned to this resource.
@@ -41,9 +44,9 @@ namespace FactionColonies.Modern{
 
         public int TotalCost => Mathf.CeilToInt((float)CostFinal * WorkersAssigned);
 
+
         public void ExposeData()
         {
-
         }
     }
 }
